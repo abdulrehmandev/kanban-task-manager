@@ -1,14 +1,15 @@
-import createBoard from "@/firebase/boards/create-board";
 import { useContext, useState } from "react";
-import { BoardContext } from "@/contexts/BoardContext";
 
-const NewBoardModal = ({ modal, setModal, setRefetch }) => {
+import createBoard from "@/firebase/boards/create-board";
+
+const NewBoardModal = ({ modal, setModal, reset }) => {
   const [formData, setFormData] = useState({
     name: "",
   });
 
   async function createBoardHandler(data) {
-    return await createBoard(data).then((res) => res);
+    const result = createBoard(data).then((res) => res);
+    if (result) reset();
   }
 
   function handleChange(e) {
@@ -18,14 +19,8 @@ const NewBoardModal = ({ modal, setModal, setRefetch }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const result = createBoardHandler(formData);
+    createBoardHandler(formData);
 
-    console.log(result);
-    if (result) {
-      setRefetch(true);
-    }
-
-    window.location.reload();
     setModal(false);
     setFormData({ name: "" });
   }

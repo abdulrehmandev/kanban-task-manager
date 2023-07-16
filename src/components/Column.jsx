@@ -1,16 +1,24 @@
+import { BoardContext } from "@/contexts/BoardContext";
 import deleteColumn from "@/firebase/columns/delete-column";
 import * as Dialog from "@radix-ui/react-dialog";
+import { useContext, useState } from "react";
 
 const Column = ({ column }) => {
+  const [open, setOpen] = useState(false);
+  const { resetBoard } = useContext(BoardContext);
+
   async function deleteColumnHandler(columnId) {
-    await deleteColumn(columnId);
+    const result = await deleteColumn(columnId).then((res) => res);
+    if (result) resetBoard();
   }
+
   function handleSubmit(e) {
     e.preventDefault();
-    deleteColumnHandler(column.id);
+    deleteColumnHandler(column.id).then(() => setOpen(false));
   }
+
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className="flex items-center justify-between gap-4 uppercase text-[0.7rem] tracking-[0.1rem] ml-2 mb-3 font-medium text-gray-600 dark:text-gray-400 w-full">
           <span>{column.name}</span>
@@ -31,7 +39,12 @@ const Column = ({ column }) => {
       </Dialog.Trigger>
       <Dialog.Portal className="relative z-50">
         <Dialog.Overlay className="bg-black bg-opacity-40 fixed inset-0" />
-        <Dialog.Content className="fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-gray-800 p-[25px] focus:outline-none">
+        <Dialog.Content
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+          }}
+          className="fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-gray-800 p-[25px] focus:outline-none"
+        >
           <Dialog.Title className="text-xl mb-4 font-medium text-gray-900 dark:text-white">
             Delete
           </Dialog.Title>

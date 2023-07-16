@@ -7,11 +7,13 @@ export default async function deleteBoard(boardId) {
   const doc_ref = doc(db, collection_name, boardId);
   console.log(boardId);
 
-  await deleteDoc(doc_ref)
+  return await deleteDoc(doc_ref)
     .then(() => {
       console.log("Board Deleted Succesfully!");
+      return true;
     })
     .catch((error) => {
       console.error("Error removing document: ", error);
+      return false;
     });
 }

@@ -1,15 +1,17 @@
 "use client";
 
+import { useContext, useState, useEffect } from "react";
+
 import { BoardContext } from "@/contexts/BoardContext";
 import { ColumnsContext } from "@/contexts/ColumnsContext";
+
 import getColumns from "@/firebase/columns/get-columns";
 
-import { useContext, useState, useEffect } from "react";
-import NewColumn from "./NewColumn";
-import TaskColumn from "./TaskColumn";
+import NewColumn from "@/components/NewColumn";
+import TaskColumn from "@/components/TaskColumn";
 
 const Board = () => {
-  const { board } = useContext(BoardContext);
+  const { board, boardSeed, resetBoard } = useContext(BoardContext);
   const [columns, setColumns] = useState([]);
   const { changeColumns } = useContext(ColumnsContext);
 
@@ -20,14 +22,16 @@ const Board = () => {
     });
   }
 
+  console.log(boardSeed);
+
   useEffect(() => {
     if (board) {
       fetchColumns(board.id);
     }
-  }, [board]);
+  }, [board, boardSeed]);
 
   return (
-    <section>
+    <section key={boardSeed}>
       {!board ? (
         <p>Open a board</p>
       ) : columns.length != 0 ? (

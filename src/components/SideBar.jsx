@@ -14,8 +14,14 @@ const SideBar = () => {
   const { isSidebarOpen } = useContext(SidebarContext);
   const { changeBoard } = useContext(BoardContext);
   const [boards, setBoards] = useState([]);
-  const [refetch, setRefetch] = useState(true);
+  const [seed, setSeed] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  const reset = () => {
+    setSeed(Math.random());
+  };
+
+  console.log(seed);
 
   async function fetchBoards() {
     await getBoards().then((data) => setBoards(data));
@@ -23,16 +29,14 @@ const SideBar = () => {
   }
 
   useEffect(() => {
-    if (refetch) {
-      setLoading(true);
-      fetchBoards();
-      changeBoard(boards[0]);
-      setRefetch(false);
-    }
-  }, [refetch]);
+    setLoading(true);
+    fetchBoards();
+    changeBoard(boards[0]);
+  }, [seed]);
 
   return (
     <aside
+      key={seed}
       className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 ${
         isSidebarOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"
       }`}
@@ -61,7 +65,7 @@ const SideBar = () => {
           </ul>
         )}
         <div>
-          <NewBoardButton setRefetch={setRefetch} />
+          <NewBoardButton reset={reset} />
         </div>
       </div>
     </aside>

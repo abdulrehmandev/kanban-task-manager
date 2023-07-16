@@ -12,17 +12,6 @@ const collection_name = "column";
 
 export default async function deleteColumn(columnId) {
   const col_ref = doc(db, collection_name, columnId);
-  await deleteDoc(col_ref)
-    .then(() => {
-      console.log("Column Deleted Succesfully!");
-
-      deleteTasks();
-
-      console.log("Tasks Deleted Succesfully!");
-    })
-    .catch((error) => {
-      console.error("Error removing column: ", error);
-    });
 
   async function deleteTasks() {
     const tasks_query = query(
@@ -36,4 +25,14 @@ export default async function deleteColumn(columnId) {
       deleteDoc(doc.ref);
     });
   }
+
+  return await deleteDoc(col_ref)
+    .then(() => {
+      deleteTasks();
+      return true;
+    })
+    .catch((error) => {
+      console.error("Error removing column: ", error);
+      return false;
+    });
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NewBoardModal from "./modals/NewBoardModal";
 
-const NewBoardButton = ({ setRefetch }) => {
+const NewBoardButton = ({ reset }) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
@@ -14,11 +14,7 @@ const NewBoardButton = ({ setRefetch }) => {
         </span>
         <span className="ml-3">Create New Board</span>
       </button>
-      <NewBoardModal
-        setRefetch={setRefetch}
-        modal={openModal}
-        setModal={setOpenModal}
-      />
+      <NewBoardModal reset={reset} modal={openModal} setModal={setOpenModal} />
     </>
   );
 };

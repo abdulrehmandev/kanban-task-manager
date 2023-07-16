@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ColumnsContext } from "@/contexts/ColumnsContext";
-import createTask from "@/firebase/tasks/create-task";
 import updateTask from "@/firebase/tasks/update-task";
+import { BoardContext } from "@/contexts/BoardContext";
 
 const EditTask = ({ task, onClick }) => {
   const [taskData, setTaskData] = useState({
@@ -12,6 +12,8 @@ const EditTask = ({ task, onClick }) => {
       id: task.column.id,
     },
   });
+  const [open, setOpen] = useState(false);
+  const { resetBoard } = useContext(BoardContext);
   const { columns } = useContext(ColumnsContext);
 
   function handleChange(e) {
@@ -24,18 +26,19 @@ const EditTask = ({ task, onClick }) => {
   }
 
   async function updateTaskHandler(data, id) {
-    await updateTask(data, id);
+    const result = await updateTask(data, id).then((res) => res);
+    if (result) resetBoard();
   }
 
   function handleSubmit(e) {
     if (taskData.title === "" || taskData.column.id === "") {
       return;
     }
+    onClick();
+
     e.preventDefault();
 
-    updateTaskHandler(taskData, task.id);
-
-    // window.location.reload();
+    updateTaskHandler(taskData, task.id).then(() => setOpen(false));
 
     setTaskData({
       title: "",
@@ -44,11 +47,10 @@ const EditTask = ({ task, onClick }) => {
         id: "",
       },
     });
-    onClick();
   }
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className="text-gray-500 w-full bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
           Edit
@@ -56,7 +58,12 @@ const EditTask = ({ task, onClick }) => {
       </Dialog.Trigger>
       <Dialog.Portal className="relative z-50">
         {/* <Dialog.Overlay className="bg-black bg-opacity-40 fixed inset-0" /> */}
-        <Dialog.Content className="fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-gray-800 p-[25px] focus:outline-none">
+        <Dialog.Content
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+          }}
+          className="fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-gray-800 p-[25px] focus:outline-none"
+        >
           <Dialog.Title className="text-xl mb-4 font-medium text-gray-900 dark:text-white">
             Edit {task.title}
           </Dialog.Title>
