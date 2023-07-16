@@ -14,6 +14,7 @@ const SideBar = () => {
   const { isSidebarOpen } = useContext(SidebarContext);
   const { changeBoard } = useContext(BoardContext);
   const [boards, setBoards] = useState([]);
+  const [refetch, setRefetch] = useState(true);
   const [loading, setLoading] = useState(true);
 
   async function fetchBoards() {
@@ -22,10 +23,13 @@ const SideBar = () => {
   }
 
   useEffect(() => {
-    setLoading(true);
-    fetchBoards();
-    changeBoard(boards[0]);
-  }, []);
+    if (refetch) {
+      setLoading(true);
+      fetchBoards();
+      changeBoard(boards[0]);
+      setRefetch(false);
+    }
+  }, [refetch]);
 
   return (
     <aside
@@ -57,7 +61,7 @@ const SideBar = () => {
           </ul>
         )}
         <div>
-          <NewBoardButton />
+          <NewBoardButton setRefetch={setRefetch} />
         </div>
       </div>
     </aside>

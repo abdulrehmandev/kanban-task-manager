@@ -1,36 +1,39 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BoardContext } from "@/contexts/BoardContext";
-import createColumn from "@/firebase/columns/create-column";
+import updateBoard from "@/firebase/boards/update-board";
 
 const EditBoard = () => {
   const { board } = useContext(BoardContext);
-  const [columnData, setColumnData] = useState({
-    name: board?.name,
+  const [boardData, setBoardData] = useState({
+    name: "",
   });
 
+  useEffect(() => {
+    setBoardData({
+      name: board?.name,
+    });
+  }, [board]);
+
   function handleNameChange(e) {
-    setColumnData({ ...columnData, name: e.target.value });
+    setBoardData({ name: e.target.value });
   }
 
-  async function createColumnHandler(data) {
-    await createColumn(data);
+  async function updateBoardHandler(data) {
+    await updateBoard(data, board.id);
   }
 
   function handleSubmit(e) {
-    if (columnData.name === "") {
+    if (boardData.name === "") {
       return;
     }
 
     e.preventDefault();
 
-    createColumnHandler(columnData);
+    updateBoardHandler(boardData);
 
-    setColumnData({
+    setBoardData({
       name: "",
-      board: {
-        id: board.id,
-      },
     });
   }
 
@@ -57,7 +60,7 @@ const EditBoard = () => {
             <input
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="name"
-              value={columnData.name}
+              value={boardData.name}
               onChange={handleNameChange}
               placeholder={board?.name}
               required

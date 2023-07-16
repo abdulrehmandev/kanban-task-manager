@@ -1,0 +1,162 @@
+[debug] [2023-07-15T11:49:31.090Z] ----------------------------------------------------------------------
+[debug] [2023-07-15T11:49:31.092Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-07-15T11:49:31.093Z] CLI Version:   12.4.4
+[debug] [2023-07-15T11:49:31.093Z] Platform:      win32
+[debug] [2023-07-15T11:49:31.093Z] Node Version:  v18.14.2
+[debug] [2023-07-15T11:49:31.094Z] Time:          Sat Jul 15 2023 16:49:31 GMT+0500 (Pakistan Standard Time)
+[debug] [2023-07-15T11:49:31.094Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-15T11:49:31.180Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-15T11:49:31.180Z] > authorizing via signed-in user (beingabdulr@gmail.com)
+[debug] [2023-07-15T11:49:31.181Z] [iam] checking project task-manager-abdulrdev for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-15T11:49:31.183Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions [none]
+[debug] [2023-07-15T11:49:31.183Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions x-goog-quota-user=projects/task-manager-abdulrdev
+[debug] [2023-07-15T11:49:31.184Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-15T11:49:33.102Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions 200
+[debug] [2023-07-15T11:49:33.103Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-15T11:49:33.105Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev [none]
+[debug] [2023-07-15T11:49:34.329Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev 200
+[debug] [2023-07-15T11:49:34.329Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev {"projectId":"task-manager-abdulrdev","projectNumber":"640582249363","displayName":"kanban-task-manager","name":"projects/task-manager-abdulrdev","resources":{"hostingSite":"task-manager-abdulrdev"},"state":"ACTIVE","etag":"1_dea88c45-7572-40a8-ba2c-85c4ab6787f9"}
+[debug] [2023-07-15T11:49:42.224Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/task-manager-abdulrdev/sites pageToken=&pageSize=10
+[debug] [2023-07-15T11:49:44.092Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/task-manager-abdulrdev/sites 200
+[debug] [2023-07-15T11:49:44.094Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/task-manager-abdulrdev/sites {"sites":[{"name":"projects/task-manager-abdulrdev/sites/task-manager-abdulrdev","defaultUrl":"https://task-manager-abdulrdev.web.app","appId":"1:640582249363:web:1402df710326a2b36e9666","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-15T11:49:44.096Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:640582249363:web:1402df710326a2b36e9666/config [none]
+[debug] [2023-07-15T11:49:45.374Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:640582249363:web:1402df710326a2b36e9666/config 200
+[debug] [2023-07-15T11:49:45.375Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:640582249363:web:1402df710326a2b36e9666/config {"projectId":"task-manager-abdulrdev","appId":"1:640582249363:web:1402df710326a2b36e9666","storageBucket":"task-manager-abdulrdev.appspot.com","apiKey":"AIzaSyB1_3eyn4R8kiB3M3GfDgxsSmTgYvgV4tY","authDomain":"task-manager-abdulrdev.firebaseapp.com","messagingSenderId":"640582249363","measurementId":"G-Y07CLV068S"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] - info Loaded env from D:\task-manager\.env
+
+[info] - info Creating an optimized production build...
+
+[info] - info Compiled successfully
+
+[info] - info Linting and checking validity of types...
+
+[info] - info Collecting page data...
+
+[info] - info Generating static pages (0/4)
+
+[info] - info Generating static pages (1/4)
+
+[info] - info Generating static pages (2/4)
+
+[info] - info Generating static pages (3/4)
+
+[info] - info Generating static pages (4/4)
+
+[info] - info Finalizing page optimization...
+
+[info] 
+
+[info] Route (app)                                Size     First Load JS
+┌ ○ /                                      2.21 kB         167 kB
+└ ○ /favicon.ico                           0 B                0 B
++ First Load JS shared by all              165 kB
+  ├ chunks/210-5f6eb95ff53b5755.js         37.6 kB
+  ├ chunks/698-82d646cdcf7acf4a.js         25.1 kB
+  ├ chunks/bce60fc1-9879b9658bb13def.js    50.5 kB
+  ├ chunks/cacdea1d-6168c684a5fc6322.js    49.7 kB
+  ├ chunks/main-app-9054e549202ed446.js    213 B
+  └ chunks/webpack-231ad739bf18cdaf.js     1.74 kB
+
+Route (pages)                              Size     First Load JS
+─ ○ /404                                   181 B          75.5 kB
++ First Load JS shared by all              75.3 kB
+  ├ chunks/framework-8883d1e9be70c3da.js   45 kB
+  ├ chunks/main-403426eb860d23e4.js        28.4 kB
+  ├ chunks/pages/_app-b75b9482ff6ea491.js  195 B
+  └ chunks/webpack-231ad739bf18cdaf.js     1.74 kB
+
+[info] 
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+
+[debug] [2023-07-15T11:50:24.321Z] Error: Unable to find the next dep, try NPM installing?
+    at getConfig (C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:391:19)
+    at build (C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:71:65)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async prepareFrameworks (C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:216:33)
+    at async deploy (C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:55:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-07-15T18:19:39.480Z] ----------------------------------------------------------------------
+[debug] [2023-07-15T18:19:39.484Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-07-15T18:19:39.485Z] CLI Version:   12.4.4
+[debug] [2023-07-15T18:19:39.485Z] Platform:      win32
+[debug] [2023-07-15T18:19:39.485Z] Node Version:  v18.14.2
+[debug] [2023-07-15T18:19:39.487Z] Time:          Sat Jul 15 2023 23:19:39 GMT+0500 (Pakistan Standard Time)
+[debug] [2023-07-15T18:19:39.487Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-15T18:19:39.649Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-15T18:19:39.650Z] > authorizing via signed-in user (beingabdulr@gmail.com)
+[debug] [2023-07-15T18:19:39.650Z] [iam] checking project task-manager-abdulrdev for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-15T18:19:39.653Z] > refreshing access token with scopes: []
+[debug] [2023-07-15T18:19:39.655Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-07-15T18:19:39.655Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-15T18:19:40.776Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-07-15T18:19:40.776Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-15T18:19:40.819Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions [none]
+[debug] [2023-07-15T18:19:40.819Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions x-goog-quota-user=projects/task-manager-abdulrdev
+[debug] [2023-07-15T18:19:40.819Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-15T18:19:43.056Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions 200
+[debug] [2023-07-15T18:19:43.057Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-15T18:19:43.062Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev [none]
+[debug] [2023-07-15T18:19:43.728Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev 200
+[debug] [2023-07-15T18:19:43.728Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev {"projectId":"task-manager-abdulrdev","projectNumber":"640582249363","displayName":"kanban-task-manager","name":"projects/task-manager-abdulrdev","resources":{"hostingSite":"task-manager-abdulrdev"},"state":"ACTIVE","etag":"1_e6e087d0-6496-4dd6-851c-7d01521b306c"}
+[debug] [2023-07-16T06:42:57.053Z] ----------------------------------------------------------------------
+[debug] [2023-07-16T06:42:57.060Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ab\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-07-16T06:42:57.061Z] CLI Version:   12.4.4
+[debug] [2023-07-16T06:42:57.062Z] Platform:      win32
+[debug] [2023-07-16T06:42:57.063Z] Node Version:  v18.14.2
+[debug] [2023-07-16T06:42:57.064Z] Time:          Sun Jul 16 2023 11:42:57 GMT+0500 (Pakistan Standard Time)
+[debug] [2023-07-16T06:42:57.065Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-16T06:42:57.346Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-16T06:42:57.348Z] > authorizing via signed-in user (beingabdulr@gmail.com)
+[debug] [2023-07-16T06:42:57.348Z] [iam] checking project task-manager-abdulrdev for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-07-16T06:42:57.351Z] > refreshing access token with scopes: []
+[debug] [2023-07-16T06:42:57.353Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-07-16T06:42:57.354Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-16T06:42:57.959Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-07-16T06:42:57.960Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-16T06:42:57.977Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions [none]
+[debug] [2023-07-16T06:42:57.977Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions x-goog-quota-user=projects/task-manager-abdulrdev
+[debug] [2023-07-16T06:42:57.977Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-16T06:42:59.738Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions 200
+[debug] [2023-07-16T06:42:59.739Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/task-manager-abdulrdev:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-07-16T06:42:59.741Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev [none]
+[debug] [2023-07-16T06:43:00.458Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev 200
+[debug] [2023-07-16T06:43:00.459Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/task-manager-abdulrdev {"projectId":"task-manager-abdulrdev","projectNumber":"640582249363","displayName":"kanban-task-manager","name":"projects/task-manager-abdulrdev","resources":{"hostingSite":"task-manager-abdulrdev"},"state":"ACTIVE","etag":"1_e6e087d0-6496-4dd6-851c-7d01521b306c"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] - info Loaded env from D:\task-manager\.env
+
+[info] - info Creating an optimized production build...
+
+[info] uncaughtException [Error: EPERM: operation not permitted, open 'D:\task-manager\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'D:\\task-manager\\.next\\trace'
+}
+
+[debug] [2023-07-16T06:43:26.749Z] Error: ENOENT: no such file or directory, open 'D:\task-manager\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.

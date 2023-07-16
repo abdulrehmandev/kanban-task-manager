@@ -9,8 +9,10 @@ export default async function createBoard(data) {
   await addDoc(doc_ref, data)
     .then((data) => {
       console.log("Added Successfully!");
+      return true;
     })
     .catch((error) => {
       console.error(error);
+      return false;
     });
 }
