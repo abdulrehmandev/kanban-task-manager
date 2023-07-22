@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ColumnsContext } from "@/contexts/ColumnsContext";
 import { BoardContext } from "@/contexts/BoardContext";
 import createTask from "@/firebase/tasks/create-task";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const NewTaskButton = () => {
   const [taskData, setTaskData] = useState({
@@ -15,6 +16,11 @@ const NewTaskButton = () => {
   const [open, setOpen] = useState(false);
   const { columns } = useContext(ColumnsContext);
   const { resetBoard } = useContext(BoardContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   function handleChange(e) {
     setTaskData((prevData) => {

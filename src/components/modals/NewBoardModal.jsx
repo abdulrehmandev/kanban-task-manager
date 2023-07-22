@@ -1,4 +1,6 @@
-import { useContext, useState } from "react";
+"use client";
+
+import { useState } from "react";
 
 import createBoard from "@/firebase/boards/create-board";
 

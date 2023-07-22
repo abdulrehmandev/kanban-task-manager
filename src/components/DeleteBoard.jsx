@@ -1,11 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BoardContext } from "@/contexts/BoardContext";
 import deleteBoard from "@/firebase/boards/delete-board";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const DeleteBoard = () => {
   const [open, setOpen] = useState(false);
   const { board } = useContext(BoardContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 
   async function deleteBoardHandler() {
     const result = await deleteBoard(board.id).then((res) => res);
@@ -13,6 +15,10 @@ const DeleteBoard = () => {
       window.location.reload();
     }
   }
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BoardContext } from "@/contexts/BoardContext";
 import updateBoard from "@/firebase/boards/update-board";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const EditBoard = () => {
   const { board } = useContext(BoardContext);
@@ -9,6 +10,7 @@ const EditBoard = () => {
   const [boardData, setBoardData] = useState({
     name: "",
   });
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 
   useEffect(() => {
     setBoardData({
@@ -41,6 +43,10 @@ const EditBoard = () => {
       name: "",
     });
   }
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

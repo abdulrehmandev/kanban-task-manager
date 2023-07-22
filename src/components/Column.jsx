@@ -1,11 +1,17 @@
 import { BoardContext } from "@/contexts/BoardContext";
 import deleteColumn from "@/firebase/columns/delete-column";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const Column = ({ column }) => {
   const [open, setOpen] = useState(false);
   const { resetBoard } = useContext(BoardContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   async function deleteColumnHandler(columnId) {
     const result = await deleteColumn(columnId).then((res) => res);

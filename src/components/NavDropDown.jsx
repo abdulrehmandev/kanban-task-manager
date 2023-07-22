@@ -1,15 +1,22 @@
-import deleteBoard from "@/firebase/boards/delete-board";
-import { useContext, useState } from "react";
-import { BoardContext } from "@/contexts/BoardContext";
+import { useState } from "react";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 const NavDropDown = () => {
   const [dropDown, setDropDown] = useState(false);
-  const [modal, setModal] = useState({
-    delete: false,
-    edit: false,
-  });
+  const { logOut, user } = useAuth();
+  const router = useRouter();
+
+  async function handleLogout() {
+    try {
+      await logOut();
+      router.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="flex items-center ml-3 relative">
@@ -38,12 +45,12 @@ const NavDropDown = () => {
         }`}
       >
         <div className="px-4 py-3" role="none">
-          <p className="text-sm text-gray-900 dark:text-white">Abdul Rehman</p>
+          {/* <p className="text-sm text-gray-900 dark:text-white">Abdul Rehman</p> */}
           <p
             className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
             role="none"
           >
-            beingabdulr@gmail.com
+            {user.email}
           </p>
         </div>
         <ul className="py-1" role="none">
@@ -55,7 +62,7 @@ const NavDropDown = () => {
           </li>
           <li>
             <a
-              href="#"
+              onClick={handleLogout}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
               role="menuitem"
             >

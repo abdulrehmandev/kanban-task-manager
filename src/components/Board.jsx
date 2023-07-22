@@ -11,7 +11,7 @@ import NewColumn from "@/components/NewColumn";
 import TaskColumn from "@/components/TaskColumn";
 
 const Board = () => {
-  const { board, boardSeed, resetBoard } = useContext(BoardContext);
+  const { board, boardSeed } = useContext(BoardContext);
   const [columns, setColumns] = useState([]);
   const { changeColumns } = useContext(ColumnsContext);
 
@@ -21,8 +21,6 @@ const Board = () => {
       changeColumns(data);
     });
   }
-
-  console.log(boardSeed);
 
   useEffect(() => {
     if (board) {

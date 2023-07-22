@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BoardContext } from "@/contexts/BoardContext";
 import createColumn from "@/firebase/columns/create-column";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const NewColumn = () => {
   const { board, resetBoard } = useContext(BoardContext);
@@ -12,6 +13,11 @@ const NewColumn = () => {
     },
   });
   const [open, setOpen] = useState(false);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   function handleNameChange(e) {
     setColumnData({ ...columnData, name: e.target.value });

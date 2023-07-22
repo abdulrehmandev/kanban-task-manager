@@ -1,12 +1,18 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import EditTask from "./EditTask";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import deleteTask from "@/firebase/tasks/delete-task";
 import { BoardContext } from "@/contexts/BoardContext";
+import { SidebarContext } from "@/contexts/SidebarContext";
 
 const TaskCard = ({ task }) => {
   const [open, setOpen] = useState(false);
   const { resetBoard } = useContext(BoardContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+
+  useEffect(() => {
+    if (open && isSidebarOpen) toggleSidebar();
+  }, [open]);
 
   async function deleteTaskHandler() {
     const result = await deleteTask(task.id).then((res) => res);
