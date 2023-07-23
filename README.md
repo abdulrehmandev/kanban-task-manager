@@ -1,9 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kanban Task Manager
+
+Kanban task manager allows users to create, edit, and delete tasks. Users can create different boards, and each board can have any number of columns. Tasks can have subtasks as well. The app is responsive and supports both light and dark themes.
+
+<p align="center">
+    <img src="./app-screenshot.jpg" alt="Kanban task manager" width="700" />
+</p>
+
+### Technologies Used
+* React
+* Next.js
+* Tailwind
+* Firebase
+* NextAuth
+
+### Features
+* Create, edit, and delete tasks
+* Create different boards
+* Each board can have any number of columns
+* Responsive and supports both light and dark themes
+* Authentication with NextAuth
+* Deployed on Vercel
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository using
+```bash
+git clone https://github.com/abdulrehmandev/kanban-task-manager.git 
+```
 
+Install the dependencies
+```bash
+npm install
+# or 
+yarn install
+# or
+pnpm install
+```
+Run the development server
 ```bash
 npm run dev
 # or
@@ -14,21 +47,17 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## To Do
+* Add more features
+* Add subtasks
+* Drag tasks between different columns
+* Improve the UI
+* Add unit tests
+* Add e2e tests
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contact
+If you have any questions or feedback, please feel free to contact me at [beingabdulr@gmail.com](mailto:beingabdulr@gmail.com).
 
-## Learn More
+### Deployed on Vercel
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The Kanban Task Manager is deployed on Vercel. You can visit the website [here](https://task-manager-abdulrdev.vercel.app/).
