@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import NewBoardModal from "./modals/NewBoardModal";
+import NewBoardModal from "./NewBoardModal";
 import { SidebarContext } from "@/contexts/SidebarContext";
 
 const NewBoardButton = ({ reset }) => {

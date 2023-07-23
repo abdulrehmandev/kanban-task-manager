@@ -6,7 +6,6 @@ import BoardProvider from "@/contexts/BoardContext";
 import SidebarProvider from "@/contexts/SidebarContext";
 
 import ColumnsProvider from "@/contexts/ColumnsContext";
-import UserProvider from "@/contexts/UserContext";
 import { AuthContextProvider } from "@/contexts/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });

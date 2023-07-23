@@ -3,11 +3,13 @@
 import { useState } from "react";
 
 import createBoard from "@/firebase/boards/create-board";
+import { useAuth } from "@/contexts/AuthContext";
 
 const NewBoardModal = ({ modal, setModal, reset }) => {
   const [formData, setFormData] = useState({
     name: "",
   });
+  const { user } = useAuth();
 
   async function createBoardHandler(data) {
     const result = createBoard(data).then((res) => res);
@@ -21,7 +23,7 @@ const NewBoardModal = ({ modal, setModal, reset }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    createBoardHandler(formData);
+    createBoardHandler({ ...formData, user: { id: user.uid } });
 
     setModal(false);
     setFormData({ name: "" });

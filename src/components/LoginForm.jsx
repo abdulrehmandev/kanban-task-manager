@@ -36,7 +36,9 @@ const LoginForm = () => {
       await logIn(formData.email, formData.password);
       router.push("/dashboard");
     } catch (err) {
-      console.error(err);
+      setError(err.message);
+      clg.error(err);
+      setLoading(false);
       return;
     }
 
